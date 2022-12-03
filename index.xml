@@ -1,8 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>闲一文档</title><link>https://nigh.github.io/wedoc/</link><description>Recent content on 闲一文档</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://nigh.github.io/wedoc/index.xml" rel="self" type="application/rss+xml"/><item><title>ARM-GCC</title><link>https://nigh.github.io/wedoc/docs/tools/arm-gcc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/arm-gcc/</guid><description>提供ARM GCC工具。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>闲一文档</title><link>https://nigh.github.io/wedoc/</link><description>Recent content on 闲一文档</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://nigh.github.io/wedoc/index.xml" rel="self" type="application/rss+xml"/><item><title>0. Zephyr-初探</title><link>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-0/</guid><description>环境搭建 0. 环境安装 参照官方文档，在 WSL on windows 和 Ubuntu 系统均成立。
+烧录工具 一些板子默认的烧录工具为 nrfjprog，访问nRF Command Line Tools安装
+一些板子默认的烧录工具为 pyocd，如无意外，会在安装依赖时自动安装上。
+手动则使用 pip3 install pyocd 来安装。安装时，可使用 pip3 install -i &amp;lt;src&amp;gt; 指定国内源提升速度。
+pip国内源
+阿里源: https://mirrors.aliyun.com/pypi/simple/
+清华源: https://pypi.tuna.tsinghua.edu.cn/simple/
+中科大源: https://pypi.mirrors.ustc.edu.cn/simple/
+Ubuntu 下安装 nrfjprog
+Ubuntu 下使用 ln -s &amp;lt;src&amp;gt; &amp;lt;des&amp;gt; 命令在 /sbin 创建 nrfjprog 的软链接 (注意 src 应当使用绝对路径)，支持安装 deb 包的系统可以直接使用 sudo dpkg -i &amp;lt;deb&amp;gt; 安装
+WSL 环境下可能缺少依赖，需要手动安装 sudo apt install libtinfo5 libncurses5
+使用 west init 的包可以拷贝至其他环境，避免重复下载耗费大量时间</description></item><item><title>1. Zephyr-涉水</title><link>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-1/</guid><description>自定义 自定义板子 参考链接：https://docs.zephyrproject.org/latest/application/index.html#custom-board-definition
+自定义板子有两种方式，一种是放到 zephyr/boards/arch/&amp;lt;board&amp;gt; 路径下，一种是放到项目的路径下 &amp;lt;project path&amp;gt;/boards/arch/&amp;lt;board&amp;gt;
+前者将自定义的板子加入了 zephyr 的 device tree，直接通过 west build -b &amp;lt;board name&amp;gt; 命令，west 就能找到板子。
+后者则需要指定板子定义的路径，但是可以避免污染原生环境：
+west build -b &amp;lt;board name&amp;gt; -- -DBOARD_ROOT=${PWD}</description></item><item><title>ARM-GCC</title><link>https://nigh.github.io/wedoc/docs/tools/arm-gcc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/arm-gcc/</guid><description>提供ARM GCC工具。
 下载安装 Ubuntu sudo apt install gcc-arm-none-eabi
 Windows 下载 https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads 安装 直接安装，并将\bin目录添加进入环境变量PATH即可。 建议使用MSYS2安装。需要注意的是，在MSYS2中安装的工具链，要在MSYS2的MINGW终端中使用。</description></item><item><title>gdbgui[Linux]</title><link>https://nigh.github.io/wedoc/docs/tools/gdbgui/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/gdbgui/</guid><description>官方在0.14.0.0版本移除了对windows的支持，windows用户可以自行摸索安装0.13.2.1之前的版本。
-安装 安装依赖：sudo apt-get install gdb python3 官方推荐使用pipx安装，先安装pipx python3 -m pip install --user pipx python3 -m userpath append ~/.local/bin 重启终端以便刷新userpath 安装gdbgui：pipx install gdbgui</description></item><item><title>Linux</title><link>https://nigh.github.io/wedoc/notes/osnotes/linux/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/osnotes/linux/</guid><description> 出于站点性质考虑，仅列出较为通用的软件，比较专业的软件就不在此列出了
-Coming soon &amp;hellip;&amp;hellip;</description></item><item><title>make[Win]</title><link>https://nigh.github.io/wedoc/docs/tools/gnu-make/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/gnu-make/</guid><description>为Windows提供make工具。
+安装 安装依赖：sudo apt-get install gdb python3 官方推荐使用pipx安装，先安装pipx python3 -m pip install --user pipx python3 -m userpath append ~/.local/bin 重启终端以便刷新userpath 安装gdbgui：pipx install gdbgui</description></item><item><title>make[Win]</title><link>https://nigh.github.io/wedoc/docs/tools/gnu-make/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/gnu-make/</guid><description>为Windows提供make工具。
 GNU make是一个维护截止于2006年的项目，建议使用MSYS2来安装make工具链。
 下载 http://gnuwin32.sourceforge.net/packages/make.htm 安装 直接安装，并将\bin目录添加进入环境变量PATH即可。</description></item><item><title>MSYS2[Win]</title><link>https://nigh.github.io/wedoc/docs/tools/msys2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/msys2/</guid><description>MSYS2是一个Windows上的软件分发和构建平台。集合了许多用于软件构建的库和工具。
 安装 官网：https://www.msys2.org/
@@ -30,41 +44,17 @@ nRF52 蓝牙更新广播信息 使用ble_advertising_advdata_update更新广播�
 在广播开启时，更改内容实时生效，更改广播长度在下一次开启广播时生效
 nRF52连接间隔与通信带宽问题 在CSW-V1上，在250ms连接间隔下，使用request方式通信只能达到2Hz左右的频率。 在CSW-V1上，在250ms连接间隔下，使用command方式通信，延迟在1-2个连接间隔。 在CSW-B5上，在250ms连接间隔下，使用command方式通信，延迟在几十ms之内，且在80ms内即返回了24个数据包。同时，测试功耗没有异常。 更改gap_conn_cfg.event_length至16可实现每个连接间隔可返回20+个数据包
 gap_conn_cfg.event_length默认值为3，其为一个以1.25ms为单位的窗口时间，每个连接间隔能够通信的时长由这个窗口的时间决定。
-蓝牙在有效距离内易断开 断开原因为:0x08(timeout)</description></item><item><title>OpenOCD</title><link>https://nigh.github.io/wedoc/docs/tools/openocd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/openocd/</guid><description>Ubuntu sudo apt install openocd
+蓝牙在有效距离内易断开 断开原因为:0x08(timeout)
+考虑调整晶振精度参数，降低精度要求：比如从20ppm改为50ppm
+参考资料： https://devzone.nordicsemi.com/f/nordic-q-a/29786/ble_hci_connection_timeout-and-nrf_clock_lf_xtal_accuracy_xx_ppm/118161#118161
+nRF52接仿真器能运行接电源不能运行 可能原因有：
+软件使能了 DCDC，但硬件未有外部 DCDC 电路。关闭 DCDC 可修复。 printf 重定向问题。Case ID: 207373 nRF52 FDS库在o2优化等级报错 问题： 在o2优化等级下，被写入的数据指针会有非 word 对齐的情况，此时会报错。</description></item><item><title>OpenOCD</title><link>https://nigh.github.io/wedoc/docs/tools/openocd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/openocd/</guid><description>Ubuntu sudo apt install openocd
 Windows 备选方案是使用choco安装。
 使用choco安装的openocd最新版本为0.10.0，与0.11.0版本命令不兼容。
 可以使用下方xpack的预编译版本
 下载 http://openocd.org/getting-openocd/ 预编译二进制(win) https://gnutoolchains.com/arm-eabi/openocd/ https://github.com/xpack-dev-tools/openocd-xpack/releases 安装 直接安装，并将\bin目录添加进入环境变量PATH即可。</description></item><item><title>TDM-GCC[Win]</title><link>https://nigh.github.io/wedoc/docs/tools/tdm-gcc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/docs/tools/tdm-gcc/</guid><description>为Windows提供GCC工具。
 备选方案是使用MSYS2安装。需要注意的是，在MSYS2中安装的工具链，要在MSYS2的MINGW终端中使用。
-下载 https://jmeubank.github.io/tdm-gcc/download/ 安装 安装完成后，将/bin目录添加进入环境变量PATH即可。</description></item><item><title>Windows</title><link>https://nigh.github.io/wedoc/notes/osnotes/windows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/osnotes/windows/</guid><description>出于站点性质考虑，仅列出较为通用的软件，比较专业的软件就不在此列出了
-IrfanView 还有更好用的免费图片浏览器么
-PotPlayer 还有更好用的免费视频播放器么
-OBS 就算你不直播，录屏也是极好的
-Everything 强大的索引与搜索引擎
-7zip 压缩与解压
-PowerToys windows的实用工具包
-Motrix 免费好用的下载工具
-Typora 所见即所得的markdown编辑器
-Sandboxie 沙盒工具
-Windows Terminal 漂亮好用的终端
-chocolatey Choco包管理器
-ACG Player (UWP) 视频播放器，在UWP环境下可用
-WolframAlpha (UWP) 科学计算，虽然不是免费的，但是因为自己已经购买了UWP的版本，而且太过于好用，所以还是列在这里了</description></item><item><title>Zephyr-初探</title><link>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-0/</guid><description>环境搭建 0. 环境安装 参照官方文档，在 WSL on windows 和 Ubuntu 系统均成立。
-烧录工具 一些板子默认的烧录工具为 nrfjprog，访问nRF Command Line Tools安装
-一些板子默认的烧录工具为 pyocd，如无意外，会在安装依赖时自动安装上。
-手动则使用 pip3 install pyocd 来安装。安装时，可使用 pip3 install -i &amp;lt;src&amp;gt; 指定国内源提升速度。
-pip国内源
-阿里源: https://mirrors.aliyun.com/pypi/simple/
-清华源: https://pypi.tuna.tsinghua.edu.cn/simple/
-中科大源: https://pypi.mirrors.ustc.edu.cn/simple/
-Ubuntu 下安装 nrfjprog
-Ubuntu 下使用 ln -s &amp;lt;src&amp;gt; &amp;lt;des&amp;gt; 命令在 /sbin 创建 nrfjprog 的软链接 (注意 src 应当使用绝对路径)，支持安装 deb 包的系统可以直接使用 sudo dpkg -i &amp;lt;deb&amp;gt; 安装
-WSL 环境下可能缺少依赖，需要手动安装 sudo apt install libtinfo5 libncurses5
-使用 west init 的包可以拷贝至其他环境，避免重复下载耗费大量时间</description></item><item><title>Zephyr-涉水</title><link>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/zephyr/zephyrnote-1/</guid><description>自定义 自定义板子 参考链接：https://docs.zephyrproject.org/latest/application/index.html#custom-board-definition
-自定义板子有两种方式，一种是放到 zephyr/boards/arch/&amp;lt;board&amp;gt; 路径下，一种是放到项目的路径下 &amp;lt;project path&amp;gt;/boards/arch/&amp;lt;board&amp;gt;
-前者将自定义的板子加入了 zephyr 的 device tree，直接通过 west build -b &amp;lt;board name&amp;gt; 命令，west 就能找到板子。
-后者则需要指定板子定义的路径，但是可以避免污染原生环境：
-west build -b &amp;lt;board name&amp;gt; -- -DBOARD_ROOT=${PWD}</description></item><item><title>备忘杂记</title><link>https://nigh.github.io/wedoc/notes/memo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/memo/</guid><description>windows terminal + oh-my-posh3 + theme 为win10配置windows terminal的主题。
+下载 https://jmeubank.github.io/tdm-gcc/download/ 安装 安装完成后，将/bin目录添加进入环境变量PATH即可。</description></item><item><title>备忘杂记</title><link>https://nigh.github.io/wedoc/notes/memo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/memo/</guid><description>windows terminal + oh-my-posh3 + theme 为win10配置windows terminal的主题。
 当无法识别AllowPrerelease参数时，可能是因为PowershellGet版本太旧。
 通过Get-module PowershellGet取得当前版本
 通过Find-module PowershellGet取得最新版本
@@ -80,30 +70,22 @@ Import-Module posh-git Import-Module oh-my-posh Get-PoshThemes Set-PoshPrompt -T
 官方使用的字体是Meslo LGM NF，体积比较大(63.8Mb)。
 这里选用的是微软出品的Cascadia Code PL体积比较小(7.8Mb)。
 根据官方描述，任意的Nerd Font应当都是兼容的。可以在nerdfonts.com网站浏览。
-参考文献: https://github.com/JanDeDobbeleer/oh-my-posh3 https://ohmyposh.dev/docs/ https://www.nerdfonts.com/ https://github.com/microsoft/cascadia-code/releases https://github.</description></item><item><title>愛と魔法</title><link>https://nigh.github.io/wedoc/notes/magic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/magic/</guid><description>代理魔法 Git 设置：
+参考文献: https://github.com/JanDeDobbeleer/oh-my-posh3 https://ohmyposh.dev/docs/ https://www.nerdfonts.com/ https://github.com/microsoft/cascadia-code/releases https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Monofur.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip zsh + oh my zsh + theme 为Linux安装zsh shell并配置主题。</description></item><item><title>愛と魔法</title><link>https://nigh.github.io/wedoc/notes/magic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/magic/</guid><description>代理魔法 Git 设置：
 git config --global http.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 取消：
 git config --global --unset http.proxy git config --global --unset https.proxy Linux shell 设置：
 export http_proxy=http://127.0.0.1:1080 export https_proxy=https://127.0.0.1:1080 export https_proxy=&amp;quot;socks5://127.0.0.1:1080&amp;quot; 取消：
 命令只对当前终端生效，重启终端即可 或者unset http_proxy Powershell $Env:http_proxy=&amp;quot;http://127.0.0.1:1080&amp;quot;; $Env:https_proxy=&amp;quot;http://127.0.0.1:1080&amp;quot; cmd 设置：
 set http_proxy=http://127.0.0.1:1080 set https_proxy=http://127.0.0.1:1080 set http_proxy_user=user set http_proxy_pass=pass set https_proxy_user=user set https_proxy_pass=pass 取消：
-set http_proxy= set https_proxy= 验证 由于 ping 不走代理，可以使用 curl -v https://www.</description></item><item><title>技术架构</title><link>https://nigh.github.io/wedoc/notes/frameworks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/frameworks/</guid><description>Electron 使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用
-优点：
-缺点：
-Flutter2 创建高性能、跨平台的移动应用
-优点：
-缺点：
-Golang + Fyne 基于 Golang 的跨平台Material Design风格的GUI库
-优点：
-缺点：
-Golang + Wails 使用 Golang 和 Web 技术构建桌面应用
-优点：
-后端使用标准Golang
-使用任意前端技术构建UI
-单条命令绑定Golang方法到前端
-原生渲染，无需嵌入浏览器
-共享事件系统
-原生文件对话框
-强大的命令行工具
-多平台
-缺点：
-Arduino 优点：</description></item></channel></rss>
+set http_proxy= set https_proxy= 验证 由于 ping 不走代理，可以使用 curl -v https://www.google.com 验证。
+换源魔法 Pip 阿里源: https://mirrors.</description></item><item><title>群晖部署 Vocechat</title><link>https://nigh.github.io/wedoc/notes/vocechat/deploy_syno/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/vocechat/deploy_syno/</guid><description>0. 安装 Docker 登陆群晖web界面，在群晖套件中心搜索并下载Docker组件。
+1. 下载 Vocechat 镜像 点击左侧注册表选项，搜索vocechat镜像并下载。
+2. 启动 Vocechat 容器 接下来的操作使用终端会更加容易。使用一个常用的SSH客户端连接到群晖服务器。 如果没有使用过SSH客户端，可以下载一个MobaXterm，自行搜索教程配置SSH连接至群晖服务器。
+接下来就只要按照下面的步骤输入命令就能完成部署啦。
+首先分别执行如下3条指令。 它们的作用分别是，建立一个docker用户组，将自己加入到这个用户组，最后将 /var/run/docker.sock 的owner设置为刚刚建立的docker用户组
+sudo synogroup --add docker sudo synogroup --member docker $USER sudo chown root:docker /var/run/docker.sock 然后断开SSH连接之后重连，使得上面的改动生效。
+docker run -d --restart=always -p 13331:3000 --name vocechat-server1 privoce/vocechat-server:latest 最后，执行上面这行命令即可启动容器了。
+其中13331为映射到的宿主端口，可按需设置。
+vocechat-server1为容器名称，亦可按需设置，
+在需要启动多个vocechat实例的时候亦可使用名称来作为区分。
+3. 部署完成 现在，访问你的群晖服务器IP:端口号就能够访问到vocechat页面啦。
+如下图所示，我这边群晖的ip是192.168.2.254，端口就是上面配置的13331，所以访问192.168.2.254:13331即可。</description></item></channel></rss>

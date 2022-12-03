@@ -14,7 +14,11 @@ nRF52 蓝牙更新广播信息 使用ble_advertising_advdata_update更新广播�
 在广播开启时，更改内容实时生效，更改广播长度在下一次开启广播时生效
 nRF52连接间隔与通信带宽问题 在CSW-V1上，在250ms连接间隔下，使用request方式通信只能达到2Hz左右的频率。 在CSW-V1上，在250ms连接间隔下，使用command方式通信，延迟在1-2个连接间隔。 在CSW-B5上，在250ms连接间隔下，使用command方式通信，延迟在几十ms之内，且在80ms内即返回了24个数据包。同时，测试功耗没有异常。 更改gap_conn_cfg.event_length至16可实现每个连接间隔可返回20+个数据包
 gap_conn_cfg.event_length默认值为3，其为一个以1.25ms为单位的窗口时间，每个连接间隔能够通信的时长由这个窗口的时间决定。
-蓝牙在有效距离内易断开 断开原因为:0x08(timeout)</description></item><item><title>备忘杂记</title><link>https://nigh.github.io/wedoc/notes/memo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/memo/</guid><description>windows terminal + oh-my-posh3 + theme 为win10配置windows terminal的主题。
+蓝牙在有效距离内易断开 断开原因为:0x08(timeout)
+考虑调整晶振精度参数，降低精度要求：比如从20ppm改为50ppm
+参考资料： https://devzone.nordicsemi.com/f/nordic-q-a/29786/ble_hci_connection_timeout-and-nrf_clock_lf_xtal_accuracy_xx_ppm/118161#118161
+nRF52接仿真器能运行接电源不能运行 可能原因有：
+软件使能了 DCDC，但硬件未有外部 DCDC 电路。关闭 DCDC 可修复。 printf 重定向问题。Case ID: 207373 nRF52 FDS库在o2优化等级报错 问题： 在o2优化等级下，被写入的数据指针会有非 word 对齐的情况，此时会报错。</description></item><item><title>备忘杂记</title><link>https://nigh.github.io/wedoc/notes/memo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/memo/</guid><description>windows terminal + oh-my-posh3 + theme 为win10配置windows terminal的主题。
 当无法识别AllowPrerelease参数时，可能是因为PowershellGet版本太旧。
 通过Get-module PowershellGet取得当前版本
 通过Find-module PowershellGet取得最新版本
@@ -30,30 +34,11 @@ Import-Module posh-git Import-Module oh-my-posh Get-PoshThemes Set-PoshPrompt -T
 官方使用的字体是Meslo LGM NF，体积比较大(63.8Mb)。
 这里选用的是微软出品的Cascadia Code PL体积比较小(7.8Mb)。
 根据官方描述，任意的Nerd Font应当都是兼容的。可以在nerdfonts.com网站浏览。
-参考文献: https://github.com/JanDeDobbeleer/oh-my-posh3 https://ohmyposh.dev/docs/ https://www.nerdfonts.com/ https://github.com/microsoft/cascadia-code/releases https://github.</description></item><item><title>愛と魔法</title><link>https://nigh.github.io/wedoc/notes/magic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/magic/</guid><description>代理魔法 Git 设置：
+参考文献: https://github.com/JanDeDobbeleer/oh-my-posh3 https://ohmyposh.dev/docs/ https://www.nerdfonts.com/ https://github.com/microsoft/cascadia-code/releases https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Monofur.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip zsh + oh my zsh + theme 为Linux安装zsh shell并配置主题。</description></item><item><title>愛と魔法</title><link>https://nigh.github.io/wedoc/notes/magic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/magic/</guid><description>代理魔法 Git 设置：
 git config --global http.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 取消：
 git config --global --unset http.proxy git config --global --unset https.proxy Linux shell 设置：
 export http_proxy=http://127.0.0.1:1080 export https_proxy=https://127.0.0.1:1080 export https_proxy=&amp;quot;socks5://127.0.0.1:1080&amp;quot; 取消：
 命令只对当前终端生效，重启终端即可 或者unset http_proxy Powershell $Env:http_proxy=&amp;quot;http://127.0.0.1:1080&amp;quot;; $Env:https_proxy=&amp;quot;http://127.0.0.1:1080&amp;quot; cmd 设置：
 set http_proxy=http://127.0.0.1:1080 set https_proxy=http://127.0.0.1:1080 set http_proxy_user=user set http_proxy_pass=pass set https_proxy_user=user set https_proxy_pass=pass 取消：
-set http_proxy= set https_proxy= 验证 由于 ping 不走代理，可以使用 curl -v https://www.</description></item><item><title>技术架构</title><link>https://nigh.github.io/wedoc/notes/frameworks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/frameworks/</guid><description>Electron 使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用
-优点：
-缺点：
-Flutter2 创建高性能、跨平台的移动应用
-优点：
-缺点：
-Golang + Fyne 基于 Golang 的跨平台Material Design风格的GUI库
-优点：
-缺点：
-Golang + Wails 使用 Golang 和 Web 技术构建桌面应用
-优点：
-后端使用标准Golang
-使用任意前端技术构建UI
-单条命令绑定Golang方法到前端
-原生渲染，无需嵌入浏览器
-共享事件系统
-原生文件对话框
-强大的命令行工具
-多平台
-缺点：
-Arduino 优点：</description></item></channel></rss>
+set http_proxy= set https_proxy= 验证 由于 ping 不走代理，可以使用 curl -v https://www.google.com 验证。
+换源魔法 Pip 阿里源: https://mirrors.</description></item></channel></rss>

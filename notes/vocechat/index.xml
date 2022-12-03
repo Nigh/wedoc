@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vocechat笔记 on 闲一文档</title><link>https://nigh.github.io/wedoc/notes/vocechat/</link><description>Recent content in Vocechat笔记 on 闲一文档</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://nigh.github.io/wedoc/notes/vocechat/index.xml" rel="self" type="application/rss+xml"/><item><title>群晖部署 Vocechat</title><link>https://nigh.github.io/wedoc/notes/vocechat/deploy_syno/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nigh.github.io/wedoc/notes/vocechat/deploy_syno/</guid><description>0. 安装 Docker 登陆群晖web界面，在群晖套件中心搜索并下载Docker组件。
+1. 下载 Vocechat 镜像 点击左侧注册表选项，搜索vocechat镜像并下载。
+2. 启动 Vocechat 容器 接下来的操作使用终端会更加容易。使用一个常用的SSH客户端连接到群晖服务器。 如果没有使用过SSH客户端，可以下载一个MobaXterm，自行搜索教程配置SSH连接至群晖服务器。
+接下来就只要按照下面的步骤输入命令就能完成部署啦。
+首先分别执行如下3条指令。 它们的作用分别是，建立一个docker用户组，将自己加入到这个用户组，最后将 /var/run/docker.sock 的owner设置为刚刚建立的docker用户组
+sudo synogroup --add docker sudo synogroup --member docker $USER sudo chown root:docker /var/run/docker.sock 然后断开SSH连接之后重连，使得上面的改动生效。
+docker run -d --restart=always -p 13331:3000 --name vocechat-server1 privoce/vocechat-server:latest 最后，执行上面这行命令即可启动容器了。
+其中13331为映射到的宿主端口，可按需设置。
+vocechat-server1为容器名称，亦可按需设置，
+在需要启动多个vocechat实例的时候亦可使用名称来作为区分。
+3. 部署完成 现在，访问你的群晖服务器IP:端口号就能够访问到vocechat页面啦。
+如下图所示，我这边群晖的ip是192.168.2.254，端口就是上面配置的13331，所以访问192.168.2.254:13331即可。</description></item></channel></rss>
